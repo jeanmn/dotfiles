@@ -25,6 +25,7 @@ c.InteractiveShellApp.exec_lines = [
     'from functools import *',
     'from itertools import *',
     'from operator import *',
+    'import pandas as pd',
 ]
 
 # If true, an 'import *' is done from numpy and pylab, when using pylab
@@ -249,7 +250,7 @@ c.TerminalInteractiveShell.editor = 'vim'
 # c.TerminalInteractiveShell.cache_size = 1000
 
 # Automatically call the pdb debugger after every exception.
-c.TerminalInteractiveShell.pdb = True
+c.TerminalInteractiveShell.pdb = False
 
 #------------------------------------------------------------------------------
 # PromptManager configuration

@@ -2,8 +2,8 @@
 set nocompatible
 
 " Add all plugins from pathogen
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles() 
+" call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles() 
 
 " BEGIN INDENTATION
 filetype plugin indent on " Use different indentation based on filetype
@@ -36,7 +36,7 @@ set laststatus=2 " always show the statusbar
 " %l = the current line
 " %L = total number of lines
 " %c = the current column
-set statusline=%F%m%r%h\ %{fugitive#statusline()}\ %=%-15(%l/%L,%c%)\ %P
+"set statusline=%F%m%r%h\ %{fugitive#statusline()}\ %=%-15(%l/%L,%c%)\ %P
 
 " BEGIN HIGHLIGHTNING
 " Turns on highlightning of characters which are after column 80
