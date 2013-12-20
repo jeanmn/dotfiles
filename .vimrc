@@ -82,6 +82,16 @@ autocmd BufEnter * call MaybeEnableOverLength()
 
 highlight SpellBad ctermbg=none ctermfg=red
 
+
+" Highlight end-of-line whitespace
+
+" color end of line whitespace unobnoxiously {{{
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS ctermbg=red guibg=red
+" }}}
+
+
 " BEGIN SYNTAX FILES
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile wscript set filetype=python
