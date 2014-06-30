@@ -19,6 +19,7 @@ c = get_config()
 
 # lines of code to run at IPython startup.
 c.InteractiveShellApp.exec_lines = [
+    'from __future__ import division, print_function',
     'import numpy as np',
     'import sklearn',
     'import scipy',
@@ -63,7 +64,7 @@ c.InteractiveShellApp.exec_lines = [
 # c.TerminalIPythonApp.exec_lines = []
 
 # Enable GUI event loop integration ('qt', 'wx', 'gtk', 'glut', 'pyglet').
-# c.TerminalIPythonApp.gui = None
+c.TerminalIPythonApp.gui = 'qt'
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
@@ -139,7 +140,7 @@ c.TerminalInteractiveShell.history_length = 100000
 # c.TerminalInteractiveShell.show_rewritten_input = True
 
 # Set the color scheme (NoColor, Linux, or LightBG).
-c.TerminalInteractiveShell.colors = 'LightBG'
+#c.TerminalInteractiveShell.colors = 'LightBG'
 
 # Autoindent IPython code entered interactively.
 # c.TerminalInteractiveShell.autoindent = True
@@ -259,7 +260,7 @@ c.TerminalInteractiveShell.pdb = False
 # This is the primary interface for producing IPython's prompts.
 
 # Output prompt. '\#' will be transformed to the prompt number
-c.PromptManager.out_template = 'Dude[\\#]: '
+#c.PromptManager.out_template = 'Dude[\\#]: '
 
 # Continuation prompt.
 c.PromptManager.in2_template = '   .\\D.: '
@@ -268,7 +269,7 @@ c.PromptManager.in2_template = '   .\\D.: '
 c.PromptManager.justify = True
 
 # Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = 'Eyy![\\#]: '
+#c.PromptManager.in_template = 'Eyy![\\#]: '
 
 #
 # c.PromptManager.color_scheme = 'Linux'
