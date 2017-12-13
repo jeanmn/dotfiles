@@ -119,6 +119,11 @@ GIT_REMOTE_BRANCH="git rev-parse --symbolic-full-name --abbrev-ref @{u} 2> /dev/
 
 PS1="\[\033[0;37m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[0;31m\]\h'; else echo '\[\033[1;33m\]\u\[\033[0;37m\]@\[\033[1;96m\]\h'; fi)\[\033[0;37m\]]\342\224\200[\[\033[1;32m\]\w\[\033[0;37m\]]\342\224\200[\[\033[1;31m\]\$(${GIT_BRANCH})\[\033[0;37m\]->\[\033[1;31m\]\$(${GIT_REMOTE_BRANCH})\[\033[0;37m\]]\342\224\200\n\[\033[0;37m\]\342\224\224\342\225\274 \[\033[0m\]"
 
+export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
 
-## please note 'PATH' is CASE sensitivity and must be in UPPERCASE ##
-export PATH=$PATH:/home/jamn/dotfiles
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export SPARK_HOME=/opt/spark
+export PATH=$SPARK_HOME/bin:$PATH
