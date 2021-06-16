@@ -1,21 +1,25 @@
-" Don't care about vi support
-set nocompatible
+" --- BEGIN VUNDLE CONFIG ---
+" See https://github.com/VundleVim/Vundle.vim#quick-start
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'elzr/vim-json'
+call vundle#end()
+filetype plugin indent on
+" --- END VUNDLE CONFIG ---
 
-" Add all plugins from pathogen
-" call pathogen#helptags()
-" call pathogen#runtime_append_all_bundles() 
-
-" BEGIN INDENTATION
-filetype plugin indent on " Use different indentation based on filetype
-filetype plugin on
-set expandtab " Turn <TAB> into spaces.
-set smarttab " replace tabs at beginning of line with spaces
+" --- BEGIN INDENTATION ---
 set softtabstop=4 " Number of spaces <TAB> expands to 
 set shiftwidth=4 " The width when pressing >>,<< or == and ai 
-set autoindent " Indent a new line equal to the one above.
+set expandtab " Turn <TAB> into spaces.
+set smarttab " replace tabs at beginning of line with spaces
+set autoindent " Indent a new line equal to the one above.                  
 set smartindent " indent a new line after e.g. {
 
-" BEGIN LOOK
+" --- BEGIN LOOK ---
 set t_Co=256 " Enable 256 colors in terminals that support it
 let g:solarized_termcolors=16
 syntax enable " Use syntax highlightning
@@ -36,7 +40,7 @@ set laststatus=2 " always show the statusbar
 " %l = the current line
 " %L = total number of lines
 " %c = the current column
-"set statusline=%F%m%r%h\ %{fugitive#statusline()}\ %=%-15(%l/%L,%c%)\ %P
+" set statusline=%F%m%r%h\ %{fugitive#statusline()}\ %=%-15(%l/%L,%c%)\ %P
 
 " BEGIN HIGHLIGHTNING
 " Turns on highlightning of characters which are after column 80
@@ -78,7 +82,7 @@ function MaybeEnableOverLength()
         call EnableOverLength()
     endif
 endfunction
-autocmd BufEnter * call MaybeEnableOverLength() 
+autocmd BufEnter * call MaybeEnableOverLength()
 
 highlight SpellBad ctermbg=none ctermfg=red
 

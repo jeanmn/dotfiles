@@ -62,11 +62,19 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
+esac
+
+OS="`uname`"
+case $OS in
+    'Darwin')
+        export CLICOLOR=1
+        export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+        ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -95,9 +103,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -107,9 +113,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 #tmux on start
-#if [[ ! $TERM =~ screen ]]; then
+if [[ ! $TERM =~ screen ]]; then
 #    exec tmux
-#fi
+    tmux new-session -A -s main
+fi
+
 
 VISUAL=vim; export VISUAL
 EDITOR=vim; export EDITOR
@@ -119,14 +127,24 @@ GIT_REMOTE_BRANCH="git rev-parse --symbolic-full-name --abbrev-ref @{u} 2> /dev/
 
 PS1="\[\033[0;37m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[0;31m\]\h'; else echo '\[\033[1;33m\]\u\[\033[0;37m\]@\[\033[1;96m\]\h'; fi)\[\033[0;37m\]]\342\224\200[\[\033[1;32m\]\w\[\033[0;37m\]]\342\224\200[\[\033[1;31m\]\$(${GIT_BRANCH})\[\033[0;37m\]->\[\033[1;31m\]\$(${GIT_REMOTE_BRANCH})\[\033[0;37m\]]\342\224\200\n\[\033[0;37m\]\342\224\224\342\225\274 \[\033[0m\]"
 
-export WORKON_HOME=$HOME/.virtualenvs
+#export WORKON_HOME=$HOME/.virtualenvs
 #export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export SPARK_HOME=/opt/spark
-export PATH=$SPARK_HOME/bin:$PATH
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# added by travis gem
+[ -f /Users/jnylund/.travis/travis.sh ] && source /Users/jnylund/.travis/travis.sh
+
+complete -C /usr/local/bin/terraform terraform
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
