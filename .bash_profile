@@ -1,20 +1,14 @@
+source ~/.profile
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-## pyenv
-# https://alysivji.github.io/setting-up-pyenv-virtualenvwrapper.html
-eval "$(pyenv init -)"
-
 ## pyenv-virtualenvwrapper
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-export WORKON_HOME=$HOME/.virtualenvs
-pyenv virtualenvwrapper_lazy
+# https://alysivji.github.io/setting-up-pyenv-virtualenvwrapper.html
+#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+#export WORKON_HOME=$HOME/.virtualenvs
+#pyenv virtualenvwrapper_lazy
 
-
-# http://www.jenv.be/
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

@@ -148,3 +148,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+## pyenv
+# https://alysivji.github.io/setting-up-pyenv-virtualenvwrapper.html
+# https://github.com/pyenv/pyenv#installation
+eval "$(pyenv init -)"
