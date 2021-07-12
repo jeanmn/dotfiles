@@ -25,11 +25,16 @@ bash: profile
 zsh: profile
 	$(call link_to_home,.zprofile)
 	$(call link_to_home,.zshrc)
-	# https://github.com/romkatv/powerlevel10k
-	brew install romkatv/powerlevel10k/powerlevel10k
-	echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
-shell: zsh
+powerlevel10k: zsh
+	brew tap homebrew/cask-fonts
+	brew install --cask font-hack-nerd-font
+	@# https://github.com/romkatv/powerlevel10k
+	brew install romkatv/powerlevel10k/powerlevel10k
+	$(call link_to_home,.p10k.zsh)
+
+
+shell: zsh powerlevel10k
 
 brew:
 	@if [[ $$(command -v brew) == "" ]]; then \
@@ -61,7 +66,7 @@ fzf: brew
 
 pyenv: brew
 	brew install pyenv
-	# https://github.com/pyenv/pyenv-virtualenvwrapper
+	@#https://github.com/pyenv/pyenv-virtualenvwrapper
 	brew install pyenv-virtualenvwrapper
 
 kubectl: brew
@@ -71,7 +76,7 @@ python: pyenv
 
 java: brew
 	brew install jenv
-	#https://stackoverflow.com/questions/30602633/maven-ignoring-jenv-settings
+	@#https://stackoverflow.com/questions/30602633/maven-ignoring-jenv-settings
 	jenv enable-plugin maven
 
 
@@ -81,7 +86,7 @@ languages: python java
 SHELL := /bin/zsh
 
 gcloud: brew
-	# https://formulae.brew.sh/cask/google-cloud-sdk
+	@# https://formulae.brew.sh/cask/google-cloud-sdk
 	brew install --cask google-cloud-sdk
 
 optional:
