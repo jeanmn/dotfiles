@@ -6,4 +6,4 @@
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/jeanmn/.config/gcloud/legacy_credentials/jean-alexander.moninnylund@tv4.se/adc.json
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/gcloud/legacy_credentials/jean-alexander.moninnylund@tv4.se/adc.json

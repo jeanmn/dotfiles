@@ -35,3 +35,7 @@ if [ -f '/Users/jeanmn/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias grep="grep --color"
+
+# https://www.jenv.be/
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
